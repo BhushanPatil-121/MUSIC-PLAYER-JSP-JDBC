@@ -397,7 +397,7 @@ try
 			
 			<div id="btn">
 			<button class="glow-on-hover" type="button"><a href="./HomePage.jsp" >HOME</a></button>
-        <button class="glow-on-hover" type="button"><a href="./AddSong.jsp">BACK</a></button>
+        <button class="glow-on-hover" type="button"><a href="./UpdateSong.jsp">BACK</a></button>
       </div> 
 			</div>
 		</div>
