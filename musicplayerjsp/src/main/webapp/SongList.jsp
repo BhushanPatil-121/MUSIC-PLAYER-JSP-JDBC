@@ -307,7 +307,7 @@ width: 438px;
 				%>
 				<div class="list" >
 				<h2 style="text-align: center; ">Song List</h2>
-				<table border="1ps solid" style="margin-top: <%=top%>px; ">
+				<table  style="margin-top: <%=top%>px; border:1px solid;">
 					<tr>
 						<td class="td">Song ID -</td>				
 						<td class="id"><%=song.getId()%></td>	
@@ -324,9 +324,9 @@ width: 438px;
 			}
 			if(!i.next()){
 				%><div id="btn" style="margin-top: <%=top-410%>px; z-index:10;">
-				<button class="glow-on-hover" type="button">
-					<a href="./HomePage.jsp">HOME</a>
-				</button>
+				<a href="./HomePage.jsp"><button class="glow-on-hover" type="button">
+					HOME
+				</button></a>
 				
 			</div>
 				<% 
@@ -370,11 +370,9 @@ width: 438px;
 		</div>
 	</div>
 		
-		</div>
 		<div class="content-left">
 			
 		</div>
-	</div>
 	<div class="content-right">
 		<img class="music-girl"
 			src="https://i.ibb.co/3d1GNVD/music-girl.png"

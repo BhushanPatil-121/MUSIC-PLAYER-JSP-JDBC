@@ -396,8 +396,8 @@ try
 		<div class="content-left">
 			
 			<div id="btn">
-			<button class="glow-on-hover" type="button"><a href="./HomePage.jsp" >HOME</a></button>
-        <button class="glow-on-hover" type="button"><a href="./UpdateSong.jsp">BACK</a></button>
+			<a href="./HomePage.jsp" ><button class="glow-on-hover" type="button">HOME</button></a>
+       <a href="./UpdateSong.jsp"><button class="glow-on-hover" type="button">BACK</button></a>
       </div> 
 			</div>
 		</div>
