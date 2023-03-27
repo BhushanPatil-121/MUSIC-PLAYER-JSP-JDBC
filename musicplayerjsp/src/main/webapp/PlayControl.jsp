@@ -289,6 +289,22 @@ td {
 .cont{
 	
 }
+#sa{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+#sna{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	
+}
+.sa{
+	height: 240px;
+	width: 320px;
+}
 
 </style>
 </head>
@@ -299,15 +315,24 @@ td {
 	
 	String button = request.getParameter("button");
 	String link=request.getParameter("name");
+	String name=request.getParameter("song");
+	boolean active=false;
+	boolean pause=false;
 	if(link!=null){
 		SongPlay.query=request.getParameter("name");
 	}
 	 if ("button1".equals(button)) {
 		 SongPlay.play();
+		 active=true;
+		 pause=false;
      } else if ("button2".equals(button)) {
     	 SongPlay.pause();
+    	 active=false;
+    	 pause=true;
      }else if ("button3".equals(button)) {
     	 SongPlay.resume();
+    	 pause=false;
+    	 active=true;
       }else if ("button4".equals(button)) {
     	  SongPlay.stop();
          %>
@@ -317,15 +342,39 @@ td {
      } 
 	%>	
 	<div class="list">
-	<h2 style="text-align: center; margin-bottom: 30px">Playing Song</h2>
+	<h2 style="text-align: center; margin-bottom: 30px">Playing <% if(name!=null){%><span style="color: aqua;"><%= name %></span><% } %> Song</h2>
 	<h1  style="z-index: 20; font-size: 50px; position: absolute;">
 	</h1>
+	<% if(SongPlay.isActive && active ){
+			 %>
+			 <div id="sa">
+			 	<img class="sa" alt="song-Playing" src="https://cutewallpaper.org/21/music-equalizer-gif/Pin-on-Music.gif">
+			 </div>
+			 <% 
+		 }
+	   if(!SongPlay.isActive && active){
+			 %>
+			 <div id="sna">
+			 	<img class="sa" alt="song-not-Avilable" src="https://media.tenor.com/V9Z08mOcTJwAAAAC/this-content-is-not-available.gif">
+			 </div>
+			 <% 
+		 }
+	   if(pause){
+			 %>
+			 <div id="sna">
+			 	<img class="sa" alt="song-not-Avilable" src="https://media.tenor.com/OAKm2CmiB1EAAAAC/play-pause.gif">
+			 </div>
+			 <% 
+		 }
+	%>
 	<div class="controll">
 	<form action="./PlayControl.jsp" method="post">
+	
     <button class="glow-on-hover cont" type="submit" name="button" value="button1">START</button>
     <button class="glow-on-hover cont" type="submit" name="button" value="button2">PAUSE</button>
     <button class="glow-on-hover cont" type="submit" name="button" value="button3">RESUME</button>
     <button class="glow-on-hover cont" type="submit" name="button" value="button4">STOP</button>
+    <input value="<%=name%>" name="song" type="text" hidden="">
 	</form> 
 	</div></div>			
 				

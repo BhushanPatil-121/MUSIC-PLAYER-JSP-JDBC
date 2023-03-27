@@ -7,7 +7,7 @@ import javax.sound.sampled.Clip;
 
 public class SongPlay {
 	
-	public static boolean pause=false;
+	public static boolean isActive=false;
 	public static boolean start=true;
 	public static AudioInputStream aStream;
 	public static Clip clip;
@@ -23,6 +23,7 @@ public class SongPlay {
 				clip.open(aStream);
 				clip.start();
 				start=false;
+				isActive=true;
 			}else {
 			}
 		} catch (Exception e2) {
@@ -54,6 +55,7 @@ public class SongPlay {
 		if(clip!=null) {
 			clip.close();
 			start=true;
+			isActive=false;
 		}
 	}
 }

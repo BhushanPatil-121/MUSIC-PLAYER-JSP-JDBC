@@ -354,6 +354,7 @@ String song = request.getParameter("song");
 String singer = request.getParameter("singer");
 String movie = request.getParameter("movie");
 String duration = request.getParameter("duration");
+duration = "C:/Users/Admin/Desktop/Songs/".concat(duration);
 try
 {
     Class.forName("com.mysql.cj.jdbc.Driver");

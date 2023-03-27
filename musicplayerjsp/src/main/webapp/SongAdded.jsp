@@ -351,7 +351,8 @@ String id = request.getParameter("id");
 String song = request.getParameter("song");
 String singer = request.getParameter("singer");
 String movie = request.getParameter("movie");
-String duration = request.getParameter("duration");
+String duration = request.getParameter("path");
+duration = "C:/Users/Admin/Desktop/Songs/".concat(duration);
 
 try
 {

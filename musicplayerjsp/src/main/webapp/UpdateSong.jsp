@@ -341,13 +341,13 @@ a:link, a:visited {
 							<td><label for=""><ul>
 										<li>Song Path</li>
 									</ul></label></td>
-							<td><input type="text" required="required" name="duration" id="song-duration" title="Please enter Number." /></td>
+							<td><input type="file" required="required" name="duration" id="song-duration" title="Please enter Number." /></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
-								<button class="glow-on-hover" type="button">
-									<a href="./HomePage.jsp">BACK</a>
-								</button>
+								<a href="./HomePage.jsp"><button class="glow-on-hover" type="button">
+									BACK
+								</button></a>
 								<button class="glow-on-hover" type="submit"  >
 									UPDATE</button>
 							</td>

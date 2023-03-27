@@ -319,7 +319,7 @@ td {
 				songString=(i.getString(2));
 				%>
 				<div class="list">
-				<h2 style="text-align: center; margin-bottom: 30px">Playing <%=song.getSong() %> Song</h2>
+				<h2 style="text-align: center; margin-bottom: 30px"><%=song.getSong() %> Song</h2>
 				<table >
 					<tr>
 						<td>Song ID - </td>				
@@ -342,6 +342,7 @@ td {
 				<div class="controll">
 				<form action="./PlayControl.jsp" method="post">
 				<input value="<%=song.getDuration()%>" name="name" type="text" hidden="">
+				<input value="<%=song.getSong()%>" name="song" type="text" hidden="">
 				<button class="glow-on-hover cont" type="submit" >
 					▶️
 				</button>

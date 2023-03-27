@@ -341,7 +341,7 @@ a:link, a:visited {
 							<td><label for="duration"><ul>
 										<li>Song File-Path</li>
 									</ul></label></td>
-							<td><input type="text" size="40" placeholder="Enter Absolute Path Of Song" required="required" name="path" id="song-path" /></td>
+							<td><input type="file" size="40"  required="required" name="path" id="song-path" /></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">
