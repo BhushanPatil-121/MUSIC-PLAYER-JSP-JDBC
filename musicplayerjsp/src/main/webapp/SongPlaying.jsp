@@ -279,6 +279,17 @@ a:link, a:visited {
 td {
 	padding-left: 50px;
 }
+.controll{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	gap:20px;
+}
+.cont{
+	margin:5px;
+	margin-left: -35px;
+}
+
 </style>
 </head>
 <body>
@@ -326,13 +337,19 @@ td {
 						<td>Movie Name -  </td>				
 						<td><%=song.getMovie() %></td>				
 					</tr>
-					<tr>
-						<td>Song Duration -</td>				
-						<td><%=song.getDuration() %></td>				
-					</tr>
 				</table> 
 				
+				<div class="controll">
+				<form action="./PlayControl.jsp" method="post">
+				<input value="<%=song.getDuration()%>" name="name" type="text" hidden="">
+				<button class="glow-on-hover cont" type="submit" >
+					▶️
+				</button>
+				
+				</form>
 				</div>
+				</div>
+				
 				
 				
 			<% }

@@ -339,9 +339,9 @@ a:link, a:visited {
 						</tr>
 						<tr>
 							<td><label for=""><ul>
-										<li>Song Duration</li>
+										<li>Song Path</li>
 									</ul></label></td>
-							<td><input type="text" required="required" name="duration" id="song-duration" title="Please enter Number." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
+							<td><input type="text" required="required" name="duration" id="song-duration" title="Please enter Number." /></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">

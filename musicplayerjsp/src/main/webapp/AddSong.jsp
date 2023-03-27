@@ -339,9 +339,9 @@ a:link, a:visited {
 						</tr>
 						<tr>
 							<td><label for="duration"><ul>
-										<li>Song Duration</li>
+										<li>Song File-Path</li>
 									</ul></label></td>
-							<td><input type="text" placeholder="Enter Duration (e.g, 3.4)" required="required" name="duration" id="song-duration" title="Please enter Number." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
+							<td><input type="text" size="40" placeholder="Enter Absolute Path Of Song" required="required" name="path" id="song-path" /></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">

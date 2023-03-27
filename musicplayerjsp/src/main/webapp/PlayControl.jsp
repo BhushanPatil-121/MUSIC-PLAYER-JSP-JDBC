@@ -1,13 +1,12 @@
-
+<%@page import="com.jspider.musicplayerjsp.song.SongPlay"%>
+<%@page import="com.jspider.musicplayerjsp.song.Song"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-
-
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Song Updated</title>
+<title>Playing Song</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -21,7 +20,8 @@
 
 body {
 	height: 100vh;
-	user-select: none;
+	scrollbar-width: thin;
+	scrollbar-color: var(- -thumbBG) var(- -scrollbarBG);
 }
 
 #background {
@@ -72,7 +72,6 @@ body {
 	text-shadow: 2px 2px 4px #7b7979;
 }
 
-
 .social {
 	font-family: "Inter", sans-serif;
 	text-shadow: 2px 2px 4px #7b7979;
@@ -82,13 +81,11 @@ body {
 	font-weight: bold;
 	font-size: 15px;
 	left: 78%;
-	top:30px;
+	top: 30px;
+	gap: 20px;
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-}
-.icon2{
-	margin-left: -30px;
 }
 
 #content {
@@ -115,6 +112,7 @@ body {
 	right: 15px;
 	scale: 1.5;
 	filter: brightness(1.1);
+	z-index: -1;
 }
 
 .add {
@@ -125,29 +123,6 @@ body {
 	font-weight: 800;
 	text-shadow: 2px 5px 14px #020202;
 	color: rgb(226, 226, 226);
-}
-
-#form {
-	position: absolute;
-	top: 120px;
-	left: 85px;
-	color: rgb(210, 210, 210);
-	font-family: "Inter", sans-serif;
-	font-size: 32px;
-	line-height: 70px;
-}
-
-td input {
-	background-color: transparent;
-	border: none;
-	outline: none;
-	border-bottom: 0.5px solid #f71cfb;
-	color: rgb(210, 210, 210);
-	font-size: 28px;
-}
-
-td {
-	padding-left: 50px;
 }
 
 /* buttons */
@@ -230,87 +205,41 @@ keyframes glowing { 0% {
 50
 
 
-
-
-
-
-
-
 %
 {
 background-position
 
 
-
-
-
-
-
-
 :
 
 
-
-
-
-
-
-
 400
-
-
-
-
-
-
 %
+
+
 0
-
-
-
-
-
-
 ;
+
+
 }
 100
 
 
-
-
-
-
 %
 {
 background-position
 
 
-
-
-
-
 :
 
 
-
-
-
-
 0
 
 
-
-
-
-
 0
-
-
-
-
-
-
 ;
+
+
 }
 }
 a:link, a:visited {
@@ -320,64 +249,87 @@ a:link, a:visited {
 	text-decoration: none;
 	display: inline-block;
 }
-#btn{
-        position: absolute;
-        top: 60%;
-        width: 70%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap:40px;
-      }
 
-.msg{
-        position: absolute;
-        width: 70%;
-        color: white;
-        font-family: "Inter", sans-serif;
-        text-shadow: 2px 2px 4px #7b7979;
-        font-size: 50px;
-        top: 200px;
-        font-weight: 900;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+#btn {
+	position: absolute;
+	top: 82%;
+	width: 70%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 40px;
+}
+
+.list {
+	z-index: 5;
+	position: absolute;
+	top: 15%;
+	height: 70%;
+	width: 60%;
+	left: 5%;
+	background-color: rgba(255, 0, 208, 0.167);
+	color: white;
+	font-family: "Inter", sans-serif;
+	font-size: 40px;
+	letter-spacing: 1px;
+	line-height: 60px;
+	padding-left: 40px;
+	padding-top: 20px; 
+}
+
+td {
+	padding-left: 50px;
+}
+.controll{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	gap:20px;
+}
+.cont{
+	
+}
+
 </style>
 </head>
+
 <body>
-<%@page import="java.sql.*,java.util.*"%>
-<%
 
-String id = request.getParameter("id");
-String song = request.getParameter("song");
-String singer = request.getParameter("singer");
-String movie = request.getParameter("movie");
-String duration = request.getParameter("duration");
-try
-{
-    Class.forName("com.mysql.cj.jdbc.Driver");
-      Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/musicplayerjsp", "root", "root");
-      Statement st=conn.createStatement();
-      int i=st.executeUpdate("update songs set id='"+ id+"',song='"+ song.toLowerCase()+"',singer='"+ singer+"',movie='"+ movie+"',path='"+duration+"' where id='"+ id+"'");
-      if(i!=0){
-    	  %>
-    	  <div class="msg"> Song Updated Successfully ✅ </div>	
-     <%  }else{    	 	 
-    	 %> <div class="msg"> Song Not Updated ❌ <br> Song Not Present  <br>OR Enter Valid Song Data  </div>
-    	 <%} %>
-     
-    		
-     <%
-   }
-   catch(Exception e)
-   { %>
-	   <div class="msg"> Song Not Updated ❌ <br> Song Not Present  <br>OR Enter Valid Song Data  </div>
-   <% System.out.print(e);
-   e.printStackTrace();
-   }
-
-%>
+	<% 
+	
+	String button = request.getParameter("button");
+	String link=request.getParameter("name");
+	if(link!=null){
+		SongPlay.query=request.getParameter("name");
+	}
+	 if ("button1".equals(button)) {
+		 SongPlay.play();
+     } else if ("button2".equals(button)) {
+    	 SongPlay.pause();
+     }else if ("button3".equals(button)) {
+    	 SongPlay.resume();
+      }else if ("button4".equals(button)) {
+    	  SongPlay.stop();
+         %>
+         <jsp:forward page="/PlaySong.jsp"></jsp:forward>
+         
+          <% 
+     } 
+	%>	
+	<div class="list">
+	<h2 style="text-align: center; margin-bottom: 30px">Playing Song</h2>
+	<h1  style="z-index: 20; font-size: 50px; position: absolute;">
+	</h1>
+	<div class="controll">
+	<form action="./PlayControl.jsp" method="post">
+    <button class="glow-on-hover cont" type="submit" name="button" value="button1">START</button>
+    <button class="glow-on-hover cont" type="submit" name="button" value="button2">PAUSE</button>
+    <button class="glow-on-hover cont" type="submit" name="button" value="button3">RESUME</button>
+    <button class="glow-on-hover cont" type="submit" name="button" value="button4">STOP</button>
+	</form> 
+	</div></div>			
+				
+		
 	<div id="background"></div>
 	<div id="navbar"></div>
 	<div id="logo">
@@ -385,27 +337,27 @@ try
 			src="https://cdn-icons-png.flaticon.com/512/6707/6707113.png"
 			alt="LOGO" /> <span class="logo-name">MUSIC-PLAYER</span>
 		<div class="social">
-		<span>CONTACT US</span> 
-					<a href="https://www.instagram.com" ><i class="fa fa-instagram icon1"
-						style="font-size: 38px; color: black; font-weight: bold"></i></a>
-						 <a href="https://www.gmail.com" ><i class="material-icons icon2" style="font-size: 46px; color: black">mail_outline</i></a>
-					
-				</div>
+			<span>CONTACT US</span> <i class="fa fa-instagram icon1"
+				style="font-size: 38px; color: black; font-weight: bold"></i> <i
+				class="material-icons icon2" style="font-size: 46px; color: black">mail_outline</i>
+		</div>
 	</div>
 	<div id="content">
+		
 		<div class="content-left">
-			
 			<div id="btn">
-			<a href="./HomePage.jsp" ><button class="glow-on-hover" type="button">HOME</button></a>
-       <a href="./UpdateSong.jsp"><button class="glow-on-hover" type="button">BACK</button></a>
-      </div> 
+				
+				
 			</div>
 		</div>
-		<div class="content-right">
-			<img class="music-girl"
-				src="https://i.ibb.co/3d1GNVD/music-girl.png"
-				alt="music" />
-		</div>
-		
+	</div>
+	<div class="content-right">
+		<img class="music-girl"
+			src="https://i.ibb.co/3d1GNVD/music-girl.png"
+			alt="music" />
+	</div>
+<script>
+    history.forward();
+</script>
 </body>
 </html>

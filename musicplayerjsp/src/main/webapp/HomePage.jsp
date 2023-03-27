@@ -363,7 +363,7 @@ a:link, a:visited {
 			<span class="play-btn"><a href="./PlaySong.jsp"><i class="fa fa-play-circle-o play-logo" style="font-size:180px;"></i></a></span>
 			<p class="description">Music-player application designed to play
 				and manage audio data on a device. These application allow users to
-				add songs, browse their songs, search for specific songs</p>
+				add songs, browse their songs, search for specific songs.</p>
 			<div id="buttons">
 				<button class="glow-on-hover" type="button"><a href="./SongList.jsp">SONG LIST</a></button>
 				<button class="glow-on-hover" type="button">

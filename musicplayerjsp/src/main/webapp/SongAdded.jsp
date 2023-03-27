@@ -352,6 +352,7 @@ String song = request.getParameter("song");
 String singer = request.getParameter("singer");
 String movie = request.getParameter("movie");
 String duration = request.getParameter("duration");
+
 try
 {
     Class.forName("com.mysql.cj.jdbc.Driver");
@@ -366,13 +367,16 @@ try
      <%
    }
    catch(Exception e)
-   { %>
+   {
+	  %>
 	   <div class="msg"> Song Not Added ❌ <br> Song Already Present  <br>OR Enter Valid Song Data  </div>
-   <% System.out.print(e);
+   <%
+   System.out.print(e);
    e.printStackTrace();
    }
-
 %>
+
+
 	<div id="background"></div>
 	<div id="navbar"></div>
 	<div id="logo">
@@ -381,9 +385,8 @@ try
 			alt="LOGO" /> <span class="logo-name">MUSIC-PLAYER</span>
 		<div class="social">
 					<span>CONTACT US</span>
-					 <i class="fa fa-instagram icon1"
-						style="font-size: 38px; color: black; font-weight: bold"></i> <i
-						class="material-icons icon2" style="font-size: 46px; color: black">mail_outline</i>
+					 <i class="fa fa-instagram icon1" style="font-size: 38px; color: black; font-weight: bold "></i> 
+					 <i class="material-icons icon2" style="font-size: 46px; color: black">mail_outline</i>
 				</div>
 	</div>
 	<div id="content">

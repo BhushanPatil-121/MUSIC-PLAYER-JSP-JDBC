@@ -264,20 +264,19 @@ a:link, a:visited {
 	position: absolute;
 	top: 15%;
 	height: 70%;
-	width: 60%;
+	width: 70%;
 	left: 5%;
 	background-color: rgba(255, 0, 208, 0.167);
 	color: white;
 	font-family: "Inter", sans-serif;
-	font-size: 40px;
+	font-size: 25px;
 	letter-spacing: 1px;
 	line-height: 60px;
-	padding-left: 40px;
 	padding-top: 20px; 
 }
 
 td {
-	padding-left: 50px;
+	padding-left: 10px;
 }
 </style>
 </head>
@@ -288,18 +287,20 @@ td {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/musicplayerjsp", "root", "root");
 		Statement st = conn.createStatement();
-		String songId= request.getParameter("search-song");
-		if(songId==null){
+		String songName= request.getParameter("search-song");
+		if(songName==null){
 			%>
 			<div class="list">No Song Present</div>
 			<%
 			
 		}
-		ResultSet i = st.executeQuery("select * from songs where song like '"+songId +"%' ");
+		ResultSet i = st.executeQuery("select * from songs where song like '"+songName +"%' ");
 		Song song = new Song();
 		if(i!=null){
+			boolean stop=true;
 			String songString=null;
-			while (i.next()) {
+			while (i.next() && stop) {
+				stop=false;
 				song.setId(i.getString(1));
 				song.setSong(i.getString(2));
 				song.setSinger(i.getString(3));
@@ -311,23 +312,23 @@ td {
 				<h2 style="text-align: center; margin-bottom: 30px">Song Information</h2>
 				<table >
 					<tr>
-						<td>Song ID - </td>				
+						<td style="width: 200px;">Song ID-</td>				
 						<td><%=song.getId()%></td>				
 					</tr>
 					<tr>
-						<td>Song Name - </td>				
+						<td>Song Name-</td>				
 						<td><%=song.getSong()%></td>				
 					</tr>
 					<tr>
-						<td>Singer Name -  </td>				
+						<td>Singer Name-</td>				
 						<td><%=song.getSinger() %></td>				
 					</tr>
 					<tr>
-						<td>Movie Name -  </td>				
+						<td>Movie Name-</td>				
 						<td><%=song.getMovie() %></td>				
 					</tr>
 					<tr>
-						<td>Song Duration -</td>				
+						<td>Song Path-</td>				
 						<td><%=song.getDuration()%></td>				
 					</tr>
 				</table> 
@@ -336,6 +337,7 @@ td {
 				
 				
 			<% }
+			
 			if(songString==null){
 				%>
 
