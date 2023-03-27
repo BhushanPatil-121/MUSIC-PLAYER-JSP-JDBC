@@ -317,31 +317,31 @@ a:link, a:visited {
 							<td><label for=""><ul>
 										<li>Song ID</li>
 									</ul> </label></td>
-							<td><input type="text" name="id" placeholder="Enter Same Song Id" id="song-id" required="required" title="Please enter Number." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
+							<td><input type="text" name="id" id="song-id" required="required" title="Please enter Number." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
 						</tr>
 						<tr>
 							<td><label for=""><ul>
 										<li>Song Name</li>
 									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Song Name" name="song" id="song-name" required="required"/></td>
+							<td><input type="text" name="song" id="song-name" required="required"/></td>
 						</tr>
 						<tr>
 							<td><label for=""><ul>
 										<li>Singer Name</li>
 									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Singer Name" name="singer" id="singer-name" required="required"/></td>
+							<td><input type="text" name="singer" id="singer-name" required="required"/></td>
 						</tr>
 						<tr>
 							<td><label for=""><ul>
 										<li>Movie Name</li>
 									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Movie Name" name="movie" id="movie-name" required="required"/></td>
+							<td><input type="text" name="movie" id="movie-name" required="required"/></td>
 						</tr>
 						<tr>
 							<td><label for=""><ul>
 										<li>Song Path</li>
 									</ul></label></td>
-							<td><input type="file" required="required" name="duration" id="song-duration"  /></td>
+							<td><input type="file" required="required" name="duration" id="song-duration" title="Please enter Number." /></td>
 						</tr>
 						<tr>
 							<td colspan="2" align="center">

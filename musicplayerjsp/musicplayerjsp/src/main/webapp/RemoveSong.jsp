@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Updating Song</title>
+<title>Removing Song</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -88,13 +88,14 @@ body {
 }
 
 
+
 .social {
 	font-family: "Inter", sans-serif;
 	text-shadow: 2px 2px 4px #7b7979;
 	position: absolute;
+	top:-23px;
 	width: 270px;
 	height: 50px;
-	top:-23px;
 	font-weight: bold;
 	font-size: 15px;
 	left: 80px;
@@ -102,6 +103,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	
 }
 .icon1{
 margin-top:-3px;
@@ -309,47 +311,26 @@ a:link, a:visited {
 	</div>
 	<div id="content">
 		<div class="content-left">
-			<span class="add">UPDATING SONG</span>
+			<span class="add">REMOVING SONG</span>
 			<div id="form">
-				<form action="./SongUpdated.jsp" method="post">
+				<form action="./SongRemoved.jsp" method="post">
 					<table>
 						<tr>
 							<td><label for=""><ul>
 										<li>Song ID</li>
 									</ul> </label></td>
-							<td><input type="text" name="id" placeholder="Enter Same Song Id" id="song-id" required="required" title="Please enter Number." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
+							<td><input type="text" name="id" id="song-id" required="required" title="Please enter Number." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
+						<br>
 						</tr>
 						<tr>
-							<td><label for=""><ul>
-										<li>Song Name</li>
-									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Song Name" name="song" id="song-name" required="required"/></td>
-						</tr>
-						<tr>
-							<td><label for=""><ul>
-										<li>Singer Name</li>
-									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Singer Name" name="singer" id="singer-name" required="required"/></td>
-						</tr>
-						<tr>
-							<td><label for=""><ul>
-										<li>Movie Name</li>
-									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Movie Name" name="movie" id="movie-name" required="required"/></td>
-						</tr>
-						<tr>
-							<td><label for=""><ul>
-										<li>Song Path</li>
-									</ul></label></td>
-							<td><input type="file" required="required" name="duration" id="song-duration"  /></td>
-						</tr>
-						<tr>
+						
 							<td colspan="2" align="center">
-								<a href="./HomePage.jsp"><button class="glow-on-hover" type="button">
-									BACK
-								</button></a>
+							<br>
+								<button class="glow-on-hover" type="button">
+									<a href="./HomePage.jsp">BACK</a>
+								</button>
 								<button class="glow-on-hover" type="submit"  >
-									UPDATE</button>
+									REMOVE</button>
 							</td>
 						</tr>
 					</table>
@@ -358,7 +339,7 @@ a:link, a:visited {
 		</div>
 		<div class="content-right">
 			<img class="music-girl"
-				src="https://i.ibb.co/3d1GNVD/music-girl.png"
+					src="https://i.ibb.co/3d1GNVD/music-girl.png"
 				alt="music" />
 		</div>
 	</div>

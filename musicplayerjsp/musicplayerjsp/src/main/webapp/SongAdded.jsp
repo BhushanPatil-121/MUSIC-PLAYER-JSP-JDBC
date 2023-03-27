@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Updating Song</title>
+<title>Song Added</title>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -72,45 +72,22 @@ body {
 	text-shadow: 2px 2px 4px #7b7979;
 }
 
-.search {
-	position: absolute;
-	right: 400px;
-}
-
-.inp-search {
-	height: 42px;
-	width: 400px;
-	padding-left: 30px;
-	box-shadow: 2px 2px 10px black;
-	border-radius: 20px;
-	font-size: 15px;
-	font-weight: bold;
-}
-
 
 .social {
 	font-family: "Inter", sans-serif;
 	text-shadow: 2px 2px 4px #7b7979;
 	position: absolute;
-	width: 270px;
-	height: 50px;
-	top:-23px;
+	width: 300px;
+	height: 40px;
 	font-weight: bold;
 	font-size: 15px;
-	left: 80px;
-	margin-left:30px;
+	left: 78%;
+	top:30px;
+	gap: 20px;
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
 }
-.icon1{
-margin-top:-3px;
-margin-left: 20px;
-}
-.icon2{
-	margin-left: -40px;
-}
-
 
 #content {
 	position: absolute;
@@ -142,7 +119,7 @@ margin-left: 20px;
 	position: absolute;
 	margin-left: 110px;
 	font-family: "Inter", sans-serif;
-	font-size: 78px;
+	font-size: 80px;
 	font-weight: 800;
 	text-shadow: 2px 5px 14px #020202;
 	color: rgb(226, 226, 226);
@@ -179,11 +156,10 @@ td {
 	left: 115px;
 	justify-content: center;
 	align-items: center;
-	
+	gap: 30px;
 }
 
 .glow-on-hover {
-margin-left:30px;
 	font-family: "Inter", sans-serif;
 	width: 150px;
 	height: 60px;
@@ -252,31 +228,85 @@ keyframes glowing { 0% {
 50
 
 
+
+
+
+
+
+
 %
 {
 background-position
 
+
+
+
+
+
+
+
 :
+
+
+
+
+
+
+
 
 400
 
+
+
+
+
+
 %
 0
+
+
+
+
+
 
 ;
 }
 100
 
+
+
+
+
+
 %
 {
 background-position
 
+
+
+
+
+
 :
 
+
+
+
+
+
 0
 
 
+
+
+
+
 0
+
+
+
+
+
 
 ;
 }
@@ -288,72 +318,85 @@ a:link, a:visited {
 	text-decoration: none;
 	display: inline-block;
 }
+#btn{
+        position: absolute;
+        top: 60%;
+        width: 70%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap:40px;
+      }
 
+.msg{
+        position: absolute;
+        width: 70%;
+        color: white;
+        font-family: "Inter", sans-serif;
+        text-shadow: 2px 2px 4px #7b7979;
+        font-size: 50px;
+        top: 200px;
+        font-weight: 900;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 </style>
 </head>
 <body>
+<%@page import="java.sql.*,java.util.*"%>
+<%
+
+String id = request.getParameter("id");
+String song = request.getParameter("song");
+String singer = request.getParameter("singer");
+String movie = request.getParameter("movie");
+String duration = request.getParameter("path");
+duration = "C:/Users/Admin/Desktop/Songs/".concat(duration);
+
+try
+{
+    Class.forName("com.mysql.cj.jdbc.Driver");
+      Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/musicplayerjsp", "root", "root");
+      Statement st=conn.createStatement();
+      int i=st.executeUpdate("insert into songs values('"+ id+"','"+ song.toLowerCase()+"','"+ singer+"','"+ movie+"','"+duration+"')");
+      if(i!=0){
+    	  %>
+    	  <div class="msg"> Song Added Successfully ✅ </div>	
+     <%  } %>
+    		
+     <%
+   }
+   catch(Exception e)
+   {
+	  %>
+	   <div class="msg"> Song Not Added ❌ <br> Song Already Present  <br>OR Enter Valid Song Data  </div>
+   <%
+   System.out.print(e);
+   e.printStackTrace();
+   }
+%>
+
+
 	<div id="background"></div>
 	<div id="navbar"></div>
 	<div id="logo">
 		<img id="logo-img"
 			src="https://cdn-icons-png.flaticon.com/512/6707/6707113.png"
 			alt="LOGO" /> <span class="logo-name">MUSIC-PLAYER</span>
-		<div class="search">
-			<div class="social">
-					<span>CONTACT US</span> 
-					<a href="https://www.instagram.com" ><i class="fa fa-instagram icon1"
-						style="font-size: 38px; color: black; font-weight: bold"></i></a>
-						 <a href="https://www.gmail.com" ><i class="material-icons icon2" style="font-size: 46px; color: black">mail_outline</i></a>
+		<div class="social">
+					<span>CONTACT US</span>
+					 <i class="fa fa-instagram icon1" style="font-size: 38px; color: black; font-weight: bold "></i> 
+					 <i class="material-icons icon2" style="font-size: 46px; color: black">mail_outline</i>
 				</div>
-		</div>
 	</div>
 	<div id="content">
 		<div class="content-left">
-			<span class="add">UPDATING SONG</span>
-			<div id="form">
-				<form action="./SongUpdated.jsp" method="post">
-					<table>
-						<tr>
-							<td><label for=""><ul>
-										<li>Song ID</li>
-									</ul> </label></td>
-							<td><input type="text" name="id" placeholder="Enter Same Song Id" id="song-id" required="required" title="Please enter Number." oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"/></td>
-						</tr>
-						<tr>
-							<td><label for=""><ul>
-										<li>Song Name</li>
-									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Song Name" name="song" id="song-name" required="required"/></td>
-						</tr>
-						<tr>
-							<td><label for=""><ul>
-										<li>Singer Name</li>
-									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Singer Name" name="singer" id="singer-name" required="required"/></td>
-						</tr>
-						<tr>
-							<td><label for=""><ul>
-										<li>Movie Name</li>
-									</ul></label></td>
-							<td><input type="text" placeholder="Enter New Movie Name" name="movie" id="movie-name" required="required"/></td>
-						</tr>
-						<tr>
-							<td><label for=""><ul>
-										<li>Song Path</li>
-									</ul></label></td>
-							<td><input type="file" required="required" name="duration" id="song-duration"  /></td>
-						</tr>
-						<tr>
-							<td colspan="2" align="center">
-								<a href="./HomePage.jsp"><button class="glow-on-hover" type="button">
-									BACK
-								</button></a>
-								<button class="glow-on-hover" type="submit"  >
-									UPDATE</button>
-							</td>
-						</tr>
-					</table>
-				</form>
+			
+			<div id="btn">
+			<button class="glow-on-hover" type="button"><a href="./HomePage.jsp" >HOME</a></button>
+        <button class="glow-on-hover" type="button"><a href="./AddSong.jsp">ADD</a></button>
+      </div> 
 			</div>
 		</div>
 		<div class="content-right">
@@ -361,8 +404,6 @@ a:link, a:visited {
 				src="https://i.ibb.co/3d1GNVD/music-girl.png"
 				alt="music" />
 		</div>
-	</div>
-	
-	
+		
 </body>
 </html>
