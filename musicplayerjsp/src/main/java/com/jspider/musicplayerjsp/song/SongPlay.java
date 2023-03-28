@@ -8,13 +8,14 @@ import javax.sound.sampled.Clip;
 public class SongPlay {
 	
 	public static boolean isActive=false;
+	public static boolean pause=false;
 	public static boolean start=true;
 	public static AudioInputStream aStream;
 	public static Clip clip;
 	public static long clipTime;
 	public static String query;
 	public static void play() {
-	if(start) {
+	if(start || !clip.isActive()) {
 		try {
 			java.io.File file=new java.io.File(query);
 			if (file.exists()) {
@@ -37,6 +38,7 @@ public class SongPlay {
 	
 	public static void pause() {
 		if(clip!=null) {
+			pause=true;
 			clipTime=clip.getMicrosecondPosition();
 			clip.stop();
 		}
@@ -44,9 +46,10 @@ public class SongPlay {
 	}
 	
 	public static void resume() {
-		if(clip!=null) {
+		if(clip!=null && pause) {
 			clip.setMicrosecondPosition(clipTime);
 			clip.start();
+			pause=false;
 		}
 		
 	}

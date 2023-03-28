@@ -1,7 +1,7 @@
 <%@page import="com.jspider.musicplayerjsp.song.SongPlay"%>
 <%@page import="com.jspider.musicplayerjsp.song.Song"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -205,41 +205,55 @@ keyframes glowing { 0% {
 50
 
 
+
+
 %
 {
 background-position
 
 
+
+
 :
 
 
+
+
 400
+
+
 %
-
-
 0
+
+
 ;
-
-
 }
 100
 
 
+
+
 %
 {
 background-position
 
 
+
+
 :
 
 
-0
 
 
 0
+
+
+
+
+0
+
+
 ;
-
-
 }
 }
 a:link, a:visited {
@@ -274,111 +288,180 @@ a:link, a:visited {
 	letter-spacing: 1px;
 	line-height: 60px;
 	padding-left: 40px;
-	padding-top: 20px; 
+	padding-top: 20px;
 }
 
 td {
 	padding-left: 50px;
 }
-.controll{
-	display:flex;
-	justify-content: center;
-	align-items: center;
-	gap:20px;
-}
-.cont{
-	
-}
-#sa{
+
+.controll {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	gap: 20px;
+}
+
+.cont {
 	
 }
-#sna{
+
+#sa {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	
 }
-.sa{
+
+#sna {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sa {
 	height: 240px;
 	width: 320px;
 }
-
 </style>
 </head>
 
 <body>
 
-	<% 
-	
+	<%
 	String button = request.getParameter("button");
-	String link=request.getParameter("name");
-	String name=request.getParameter("song");
-	boolean active=false;
-	boolean pause=false;
-	if(link!=null){
-		SongPlay.query=request.getParameter("name");
+	String link = request.getParameter("name");
+	String name = request.getParameter("song");
+	boolean active = false;
+	boolean pause = false;
+	if (link != null) {
+		SongPlay.query = request.getParameter("name");
 	}
-	 if ("button1".equals(button)) {
-		 SongPlay.play();
-		 active=true;
-		 pause=false;
-     } else if ("button2".equals(button)) {
-    	 SongPlay.pause();
-    	 active=false;
-    	 pause=true;
-     }else if ("button3".equals(button)) {
-    	 SongPlay.resume();
-    	 pause=false;
-    	 active=true;
-      }else if ("button4".equals(button)) {
-    	  SongPlay.stop();
-         %>
-         <jsp:forward page="/PlaySong.jsp"></jsp:forward>
-         
-          <% 
-     } 
-	%>	
-	<div class="list">
-	<h2 style="text-align: center; margin-bottom: 30px">Playing <% if(name!=null){%><span style="color: aqua;"><%= name %></span><% } %> Song</h2>
-	<h1  style="z-index: 20; font-size: 50px; position: absolute;">
-	</h1>
-	<% if(SongPlay.isActive && active ){
-			 %>
-			 <div id="sa">
-			 	<img class="sa" alt="song-Playing" src="https://cutewallpaper.org/21/music-equalizer-gif/Pin-on-Music.gif">
-			 </div>
-			 <% 
-		 }
-	   if(!SongPlay.isActive && active){
-			 %>
-			 <div id="sna">
-			 	<img class="sa" alt="song-not-Avilable" src="https://media.tenor.com/V9Z08mOcTJwAAAAC/this-content-is-not-available.gif">
-			 </div>
-			 <% 
-		 }
-	   if(pause){
-			 %>
-			 <div id="sna">
-			 	<img class="sa" alt="song-not-Avilable" src="https://media.tenor.com/OAKm2CmiB1EAAAAC/play-pause.gif">
-			 </div>
-			 <% 
-		 }
+	if ("button1".equals(button)) {
+		SongPlay.play();
+		active = true;
+		pause = false;
+	} else if ("button2".equals(button)) {
+		SongPlay.pause();
+		active = false;
+		pause = true;
+	} else if ("button3".equals(button)) {
+		SongPlay.resume();
+		pause = false;
+		active = true;
+	} else if ("button4".equals(button)) {
+		SongPlay.stop();
 	%>
-	<div class="controll">
-	<form action="./PlayControl.jsp" method="post">
-	
-    <button class="glow-on-hover cont" type="submit" name="button" value="button1">START</button>
-    <button class="glow-on-hover cont" type="submit" name="button" value="button2">PAUSE</button>
-    <button class="glow-on-hover cont" type="submit" name="button" value="button3">RESUME</button>
-    <button class="glow-on-hover cont" type="submit" name="button" value="button4">STOP</button>
-    <input value="<%=name%>" name="song" type="text" hidden="">
-	</form> 
-	</div></div>			
-				
-		
+	<jsp:forward page="/PlaySong.jsp"></jsp:forward>
+
+	<%
+	}
+	%>
+	<div class="list">
+		<h2 style="text-align: center; margin-bottom: 30px">
+			Playing
+			<%
+		if (name != null) {
+		%><span style="color: aqua;"><%=name%></span>
+			<%
+			}
+			%>
+			
+		</h2>
+		<h1 style="z-index: 20; font-size: 50px; position: absolute;"></h1>
+		<%
+		if (SongPlay.isActive && active) {
+		%>
+		<div id="sa">
+			<img class="sa" alt="song-Playing"
+				src="https://cutewallpaper.org/21/music-equalizer-gif/Pin-on-Music.gif">
+		</div>
+		<%
+		}
+		if (!SongPlay.isActive && active) {
+		%>
+		<div id="sna">
+			<img class="sa" alt="song-not-Avilable"
+				src="https://media.tenor.com/V9Z08mOcTJwAAAAC/this-content-is-not-available.gif">
+		</div>
+		<%
+		}
+		if (pause) {
+		%>
+		<div id="sna">
+			<img class="sa" alt="song-not-Avilable"
+				src="https://media.tenor.com/OAKm2CmiB1EAAAAC/play-pause.gif">
+		</div>
+		<%
+		}
+		%>
+		<div class="controll">
+			<form action="./PlayControl.jsp" method="post">
+				<%
+				if ("button1".equals(button)) {
+				%>
+				<button class="glow-on-hover cont" style="color: black;"
+					type="submit" name="button" value="button1">START</button>
+				<%
+				} else if ("button3".equals(button) && !SongPlay.pause) {
+				%>
+				<button class="glow-on-hover cont" style="color: black;"
+					type="submit" name="button" value="button1">START</button>
+				<%
+				} else {
+				%>
+				<button class="glow-on-hover cont" type="submit" name="button"
+					value="button1">START</button>
+				<%
+				}
+				%>
+				<%
+				if ("button2".equals(button)) {
+				%>
+				<button class="glow-on-hover cont" type="submit" name="button"
+					value="button2" style="color: black;">PAUSE</button>
+				<%
+				} else {
+				%>
+				<button class="glow-on-hover cont" type="submit" name="button"
+					value="button2">PAUSE</button>
+				<%
+				}
+				%>
+				<%
+				if ("button3".equals(button) && SongPlay.pause) {
+				%>
+				<button class="glow-on-hover cont" type="submit" name="button"
+					value="button3" style="color: black;">RESUME</button>
+				<%
+				} else {
+				%>
+				<button class="glow-on-hover cont" type="submit" name="button"
+					value="button3">RESUME</button>
+				<%
+				}
+				%>
+				<%
+				if ("button4".equals(button)) {
+				%>
+				<button class="glow-on-hover cont" style="color: black;"
+					type="submit" name="button" value="button4">STOP</button>
+				<%
+				} else {
+				%>
+				<button class="glow-on-hover cont" type="submit" name="button"
+					value="button4">STOP</button>
+				<%
+				}
+				%>
+
+
+
+				<input value="<%=name%>" name="song" type="text" hidden="">
+			</form>
+		</div>
+	</div>
+
+
 	<div id="background"></div>
 	<div id="navbar"></div>
 	<div id="logo">
@@ -392,21 +475,17 @@ td {
 		</div>
 	</div>
 	<div id="content">
-		
+
 		<div class="content-left">
-			<div id="btn">
-				
-				
-			</div>
+			<div id="btn"></div>
 		</div>
 	</div>
 	<div class="content-right">
-		<img class="music-girl"
-			src="https://i.ibb.co/3d1GNVD/music-girl.png"
+		<img class="music-girl" src="https://i.ibb.co/3d1GNVD/music-girl.png"
 			alt="music" />
 	</div>
-<script>
-    history.forward();
-</script>
+	<script>
+		history.forward();
+	</script>
 </body>
 </html>
